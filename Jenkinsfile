@@ -4,7 +4,7 @@ pipeline {
 	agent { 
 		docker {
 			image 'maven:3.6.3'
-			args '--privileged'
+			args '--privileged=true'
 			} 
 		}
 	stages{
