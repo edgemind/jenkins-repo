@@ -1,6 +1,10 @@
 //DECLARATIVE
 pipeline {
 	agent any
+	environment{
+		NEW_VER = '1.2'
+		NEW_CRED = credentials("git-cred")
+	}
 	stages{
 		stage('Buildddd'){
 			when{
@@ -9,7 +13,7 @@ pipeline {
 				}
 			}
 			steps{
-				echo "Builddddd"
+				echo "Building ver got from var is: ${NEW_VER}"
 			}
 		}
 		stage('Pre-test'){
@@ -20,9 +24,21 @@ pipeline {
 		
 		stage('Testttt'){
 			steps{
-				echo "testtt"
+				echo "testing with ${NEW_CRED}"
 			}
 		}
+		stage('Deploy'){
+			steps{
+				echo "Deploying with ..."
+				withCredentials(
+					[
+						usernamePassword(credentials: 'git-cred', usernameVariable: USER, passwordVariable: PWD)
+					]
+					sh "some script with user pass variables: ${USER} , ${PWD}"
+				)
+			}
+		}
+
 		stage('Integggg'){
 			steps{
 				echo "Integgg"
