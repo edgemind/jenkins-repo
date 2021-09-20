@@ -23,7 +23,7 @@ pipeline {
 		
 		stage('Testttt'){
 			steps{
-				echo "Value of env var at test ${params.execTest}"
+				echo "Value of exec params ${params.execTest}"
 			}
 		}
 		stage('Deploy'){
