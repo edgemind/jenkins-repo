@@ -13,10 +13,10 @@ pipeline {
 		//NEW_CRED = credentials("git-cred")
 	}
 	stages{
-		stage('Buildddd'){
+		stage('Builddd'){
 			when{
 				expression{
-					BRANCH_NAME == 'master' && params.exec-test
+					params.exec-test
 					
 				}
 			}
