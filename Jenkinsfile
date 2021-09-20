@@ -4,14 +4,9 @@ pipeline {
 
 	parameters{
 		booleanParam(name: 'exec-test', defaultValue: true)
-		choice(name: 'VER', choices: ['1.1', '1.2', '1.3'])
+		choice(name: 'VERSION', choices: ['1.1', '1.2', '1.3'])
 	}
 
-
-	environment{
-		NEW_VER = '5.5'
-		//NEW_CRED = credentials("git-cred")
-	}
 	stages{
 		stage('Builddd'){
 			when{
@@ -21,14 +16,10 @@ pipeline {
 				}
 			}
 			steps{
-				echo "Building ver got from var is: ${NEW_VER}"
+				echo "Building ver got from var is: ${params.VERSION}"
 			}
 		}
-		stage('Pre-test'){
-			steps{
-				echo "pretest..."
-			}
-		}
+		
 		
 		stage('Testttt'){
 			steps{
@@ -44,12 +35,6 @@ pipeline {
 				//	]
 					//echo "some script with user pass ${USER}"
 				//)
-			}
-		}
-
-		stage('Integggg'){
-			steps{
-				echo "Integgg"
 			}
 		}
 	}
