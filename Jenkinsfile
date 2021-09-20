@@ -1,18 +1,21 @@
 //DECLARATIVE
 pipeline {
-	//agent any
-	agent { 
-		docker {
-			image 'maven:3.6.3'
-			args '--privileged=true'
-			} 
-		}
+	agent any
+	
+	
+	
 	stages{
 		stage('Buildddd'){
 			steps{
 				echo "Builddddd"
 			}
 		}
+		stage('Pre-test'){
+			steps{
+				echo "pretest..."
+			}
+		}
+		
 		stage('Testttt'){
 			steps{
 				echo "testtt"
