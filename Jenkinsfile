@@ -1,15 +1,22 @@
 //DECLARATIVE
 pipeline {
 	agent any
+
+	parameters{
+		booleanParam(name: 'exec-test', defaultValue: true)
+		choice(name: 'VER', choices: ['1.1', '1.2', '1.3'])
+	}
+
+
 	environment{
-		NEW_VER = '1.2'
+		NEW_VER = '5.5'
 		//NEW_CRED = credentials("git-cred")
 	}
 	stages{
 		stage('Buildddd'){
 			when{
 				expression{
-					BRANCH_NAME == 'master'
+					BRANCH_NAME == 'master' && params.exec-test
 					
 				}
 			}
@@ -25,7 +32,7 @@ pipeline {
 		
 		stage('Testttt'){
 			steps{
-				echo "testing with ${NEW_CRED}"
+				echo "Value of env var at test ${params.exec-test}"
 			}
 		}
 		stage('Deploy'){
