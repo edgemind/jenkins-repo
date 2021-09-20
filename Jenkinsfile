@@ -34,7 +34,7 @@ pipeline {
 					[
 						usernamePassword(credentials: 'git-cred', usernameVariable: USER, passwordVariable: PWD)
 					]
-					sh "some script with user pass variables- ${USER} , ${PWD}"
+					echo "some script with user pass variables- ${USER} , ${PWD}"
 				)
 			}
 		}
