@@ -3,7 +3,7 @@ pipeline {
 	agent any
 	environment{
 		NEW_VER = '1.2'
-		NEW_CRED = credentials("git-cred")
+		//NEW_CRED = credentials("git-cred")
 	}
 	stages{
 		stage('Buildddd'){
@@ -31,12 +31,12 @@ pipeline {
 		stage('Deploy'){
 			steps{
 				echo "Deploying with ..."
-				withCredentials(
-					[
-						usernamePassword(credentials: 'git-cred', usernameVariable: USER, passwordVariable: PWD)
-					]
+				//withCredentials(
+				//	[
+				//		usernamePassword(credentials: 'git-cred', usernameVariable: USER, passwordVariable: PWD)
+				//	]
 					//echo "some script with user pass ${USER}"
-				)
+				//)
 			}
 		}
 
