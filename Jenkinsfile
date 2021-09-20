@@ -3,7 +3,7 @@ pipeline {
 	agent any
 
 	parameters{
-		booleanParam(name: 'exec-test', defaultValue: true, description: 'nothing to desc')
+		booleanParam(name: 'execTest', defaultValue: true, description: 'nothing to desc')
 		choice(name: 'VERSION', choices: ['1.1', '1.2', '1.3'], description: 'nothing to desc')
 	}
 
@@ -11,7 +11,7 @@ pipeline {
 		stage('Builddd'){
 			when{
 				expression{
-					params.exec-test
+					params.execTest
 					
 				}
 			}
@@ -23,7 +23,7 @@ pipeline {
 		
 		stage('Testttt'){
 			steps{
-				echo "Value of env var at test ${params.exec-test}"
+				echo "Value of env var at test ${params.execTest}"
 			}
 		}
 		stage('Deploy'){
