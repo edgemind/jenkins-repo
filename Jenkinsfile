@@ -2,13 +2,14 @@
 pipeline {
 	agent any
 
-	stage('Testttt'){
-			steps{
-				echo "Testing the app..."
-			}
-		}
-
 	stages{
+		stage('Testttt'){
+				steps{
+					echo "Testing the app..."
+				}
+			}
+
+	
 		stage('Builddd'){
 			when{
 				expression{
@@ -24,15 +25,12 @@ pipeline {
 		
 		
 		stage('Deploy'){
-			steps{
-
-				when {
+			when {
 					expression {
 						BRANCH_NAME == 'master'
 					}
 				}
-
-
+			steps{
 				echo "Deploying the app with ..."
 				//withCredentials(
 				//	[
