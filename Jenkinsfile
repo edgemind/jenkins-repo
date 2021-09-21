@@ -2,13 +2,14 @@
 pipeline {
 	agent any
 
-	stage('Testttt'){
-			steps{
-				echo "Testing the app..."
-			}
-		}
-
 	stages{
+		stage('Testttt'){
+				steps{
+					echo "Testing the app..."
+				}
+			}
+
+	
 		stage('Builddd'){
 			when{
 				expression{
