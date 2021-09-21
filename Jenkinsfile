@@ -25,15 +25,12 @@ pipeline {
 		
 		
 		stage('Deploy'){
-			steps{
-
-				when {
+			when {
 					expression {
 						BRANCH_NAME == 'master'
 					}
 				}
-
-
+			steps{
 				echo "Deploying the app with ..."
 				//withCredentials(
 				//	[
